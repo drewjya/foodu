@@ -2,6 +2,8 @@
 
 version 0.3.1 Alpha
 
+## note file apk ada di direktori deploy
+
 ## Getting Started
 
 Project ini merupakan aplikasi media berbasis mobile dimana pengguna bisa berbagi dan
