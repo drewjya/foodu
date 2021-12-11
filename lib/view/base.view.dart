@@ -19,7 +19,7 @@ class BaseView extends StatelessWidget {
       ColorConst.profile,
     ];
     List<Widget> body = [
-      const HomeView(),
+      HomeView(),
       const ExploreView(),
       const UploadView(),
       const ProfileView(),

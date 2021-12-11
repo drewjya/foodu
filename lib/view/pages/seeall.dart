@@ -3,7 +3,6 @@ import 'package:foodu/component/newscaffold.dart';
 import 'package:foodu/component/text.dart';
 import 'package:foodu/constants/color.dart';
 import 'package:foodu/constants/helpers.dart';
-import 'package:foodu/controller/content/seeall.controller.dart';
 import 'package:foodu/service/routes.dart';
 import 'package:get/get.dart';
 

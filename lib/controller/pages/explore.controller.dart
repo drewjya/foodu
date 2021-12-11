@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 
 class ExploreController extends GetxController {
   List categories = dataCateg;
-  Map<String, dynamic> categori = Map<String, dynamic>();
+  Map<String, dynamic> categori = <String, dynamic>{};
   List<GetRecipe> listRecipe = [];
 
   getRecipe() {

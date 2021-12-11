@@ -9,7 +9,7 @@ class BaseBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => BaseController());
-    Get.lazyPut(() => HomeController());
+    Get.put( HomeController());
     Get.lazyPut(() => ExploreController());
     Get.lazyPut(() => UploadController());
     Get.lazyPut(() => ProfileController());

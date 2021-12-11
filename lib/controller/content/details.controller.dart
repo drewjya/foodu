@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class DetailsController extends GetxController
     with GetSingleTickerProviderStateMixin {
+      
   final List<Tab> myTab = <Tab>[
     Tab(
       text: 'Ingredients'.toUpperCase(),
