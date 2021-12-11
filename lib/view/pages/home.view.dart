@@ -114,7 +114,15 @@ class HomeView extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(right: 20),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            print(controller.newCateg);
+                            // Get.toNamed(Routes.seeall, arguments: [
+                            //   controller.exist.keys.toList(),
+                            //   "what's hot",
+                            //   controller.newCateg,
+                            //   controller.allRecipe,
+                            // ]);
+                          },
                           child: Text(
                             "see all",
                             style: GoogleFonts.lato(
@@ -135,21 +143,22 @@ class HomeView extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 20),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: controller.categories.length,
+                    itemCount: controller.exist.length,
                     itemBuilder: (context, index) {
+                      var current = controller.exist.keys.elementAt(index);
                       return SizedBox(
                         width: 100.0,
                         child: InkWell(
                           onTap: () {
                             Get.toNamed(Routes.decont, arguments: [
-                              controller.categori[controller.categories[index]],
-                              controller.categories[index]
+                              controller.newCateg[current],
+                              current
                             ]);
                           },
                           child: Card(
                             child: Center(
                               child: CustomText(
-                                text: controller.categories[index],
+                                text: controller.exist.keys.elementAt(index),
                                 fontSize: 15,
                                 color: Colors.black,
                               ),
@@ -169,23 +178,38 @@ class HomeView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Container(
                   margin: const EdgeInsets.only(left: 20),
-                  height: 125,
+                  height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: controller.listRecipe.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(
+                            Routes.details,
+                            arguments: controller.listRecipe[index],
+                          );
+                        },
                         child: Container(
+                          width: 150,
+                          height: 150,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.red,
-                          ),
-                          margin: const EdgeInsets.all(10),
-                          child: Image.network(
-                            'https://caps.team/assets/img/merchandise/test1.png',
-                            fit: BoxFit.contain,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black54,
+                                  blurRadius: 5,
+                                  spreadRadius: 1,
+                                )
+                              ],
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      controller.listRecipe[index].imglink),
+                                  fit: BoxFit.cover)),
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 10,
                           ),
                         ),
                       );

@@ -19,8 +19,8 @@ class DetailsCategories extends StatelessWidget {
       return NewScaffold(
         appBar: AppBar(
           title: CustomText(
-            text: 'Explore ${data[1]}',
-            fontSize: 22,
+            text: '${data[1]}',
+            fontSize: 18,
             color: Colors.black,
           ),
           elevation: 0,

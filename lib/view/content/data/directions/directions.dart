@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodu/component/text.dart';
 
 class Directions extends StatelessWidget {
-  final List<String> directions;
+  final List directions;
   const Directions({Key? key, required this.directions}) : super(key: key);
   @override
   Widget build(BuildContext context) {

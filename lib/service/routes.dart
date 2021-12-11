@@ -5,4 +5,5 @@ class Routes {
   static const base = '/base';
   static const details = '/details';
   static const decont = '/decont';
+  static const seeall = '/seeall';
 }

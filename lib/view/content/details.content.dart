@@ -86,9 +86,12 @@ class DetailsContent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CustomText(
-                    text: data.title,
-                    fontSize: 27,
+                  Text(
+                    data.title,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(
+                      fontSize: 27,
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -241,7 +244,7 @@ class DetailsContent extends StatelessWidget {
               child: TabBarView(
                 children: [
                   Ingredients(ingredients: data.ingredients),
-                  Directions(directions: data.tutorial as List<String>),
+                  Directions(directions: data.tutorial),
                   const Center(
                     child: Text('3'),
                   ),
