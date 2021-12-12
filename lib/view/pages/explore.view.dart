@@ -5,7 +5,6 @@ import 'package:foodu/constants/helpers.dart';
 import 'package:foodu/controller/pages/explore.controller.dart';
 import 'package:foodu/service/routes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({Key? key}) : super(key: key);
@@ -57,9 +56,9 @@ class ExploreView extends StatelessWidget {
                               child: InkWell(
                                 onTap: () {
                                   Get.toNamed(Routes.decont, arguments: [
-                                    controller
-                                        .categori[controller.categories[index]],
-                                    controller.categories[index],
+                                    controller.categori[
+                                        controller.categories[index]][true],
+                                    controller.categories[index]
                                   ]);
                                 },
                                 child: Container(
@@ -87,9 +86,14 @@ class ExploreView extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Get.toNamed(Routes.decont, arguments: [
-                              controller.categori[controller.categories[index]],
-                              controller.categories[index],
+                              controller.categori[controller.categories[index]]
+                                  [true],
+                              controller.categories[index]
                             ]);
+                            // Get.toNamed(Routes.decont, arguments: [
+                            //   controller.categori[controller.categories[index]],
+                            //   controller.categories[index],
+                            // ]);
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(

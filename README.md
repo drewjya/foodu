@@ -1,6 +1,6 @@
 # foodu
 
-version 0.3.1 Alpha
+version 0.3.3 Alpha
 
 ## note file apk ada di direktori deploy
 

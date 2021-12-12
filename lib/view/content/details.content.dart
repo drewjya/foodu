@@ -16,7 +16,6 @@ class DetailsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GetRecipe data = Get.arguments;
-
     var size = getSize(context);
     return GetBuilder<DetailsController>(builder: (controller) {
       controller.init(data);

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:foodu/class/recipe.dart';
 import 'package:foodu/constants/data.dart';
@@ -11,13 +9,18 @@ class HomeController extends GetxController {
   late TextEditingController searchRecipe;
   RxString textfieldString = ''.obs;
   RxList<GetRecipe> recipeList = <GetRecipe>[].obs;
+  RxList<String> recipeName = <String>[].obs;
 
   void fetchRecipeAll() async {
     var recipes = await ApiHelper.fetchRecipe();
     if (recipes != null) {
       recipeList.value = recipes;
+      recipeList.sort((a, b) => a.title.compareTo(b.title));
+      for (var element in recipeList) {
+        recipeName.add(element.title);
+        
+      }
     }
-    recipeList.sort((a, b) => a.title.compareTo(b.title));
     categoriesExist();
   }
 
@@ -49,50 +52,16 @@ class HomeController extends GetxController {
 
     super.onInit();
   }
-  // getRecipe() {
-  //   for (var item in data) {
-  //     allRecipe.add(GetRecipe.fromJson(json: item));
-  //   }
-  //   for (var all in allRecipe.getRange(0, 3)) {
-  //     listRecipe.add(all);
-  //   }
-  // }
 
-  // List categories = dataCateg;
-
-  // Map<String, bool> exist = <String, bool>{};
-  // Map<String, dynamic> newCateg = <String, dynamic>{};
-
-  // getExistorNot() {
-  //   for (String item in categories) {
-  //     var data = groupBy(
-  //         allRecipe, (GetRecipe enak) => enak.categories.contains(item));
-  //     data.forEach((key, value) {
-  //       if (key) {
-  //         exist[item] = key;
-  //         newCateg[item] = data[key];
-  //       }
-  //     });
-  //   }
-  // }
-
-  onSugestion(sugestion) {
-    // for (var item in allRecipe) {
-    //   if (item.title == sugestion) {
-    //     Get.toNamed(Routes.details, arguments: item);
-    //   }
-    // }
-    // searchRecipe.clear();
-  }
-
-  List<String> getSugestions(String query) {
-    List<String> matches = [];
+  List<GetRecipe> getRecipeSugestions(String query) {
     if (query.isNotEmpty) {
-      // matches.addAll(allRecipe.map((e) => e.title).toList());
-      // matches.retainWhere(
-      //     (element) => element.toLowerCase().contains(query.toLowerCase()));
-      // return matches;
+      return recipeList
+          .where((recipe) =>
+              recipe.title.toLowerCase().contains(query.toLowerCase()))
+          .take(5)
+          .toList();
+    } else {
+      return [];
     }
-    return [''];
   }
 }

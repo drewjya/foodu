@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodu/constants/helpers.dart';
 import 'package:get/get.dart';
-
 import 'package:foodu/component/newscaffold.dart';
 import 'package:foodu/component/text.dart';
 import 'package:foodu/constants/color.dart';
@@ -15,11 +13,14 @@ class DetailsCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> data = Get.arguments;
     return GetBuilder<DCategoriesController>(builder: (controller) {
-      controller.intit(data[0]);
+      if (data[0] != null) {
+        controller.intit(data[0]);
+        controller.setCondition = true.obs;
+      }
       return NewScaffold(
         appBar: AppBar(
           title: CustomText(
-            text: '${data[1]}',
+            text: data[1],
             fontSize: 18,
             color: Colors.black,
           ),
@@ -28,7 +29,7 @@ class DetailsCategories extends StatelessWidget {
           centerTitle: true,
           backgroundColor: ColorConst.white,
         ),
-        body: (controller.item.isEmpty)
+        body: (!controller.setCondition.value)
             ? const Center(
                 child: Text('Kosong'),
               )

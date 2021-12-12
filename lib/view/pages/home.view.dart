@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:foodu/class/recipe.dart';
 import 'package:foodu/component/text.dart';
 import 'package:foodu/constants/color.dart';
 import 'package:foodu/constants/helpers.dart';
@@ -30,53 +31,57 @@ class HomeView extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: ColorConst.cream,
                     borderRadius: BorderRadius.circular(30)),
-                child: TextField(),
-                // TypeAheadField(
-                //   textFieldConfiguration: TextFieldConfiguration(
-                //     controller: controller.searchRecipe,
-                //     style: const TextStyle(height: 1.5),
-                //     cursorColor: ColorConst.original,
-                //     decoration: InputDecoration(
-                //       fillColor: Colors.white,
-                //       contentPadding:
-                //           const EdgeInsets.symmetric(horizontal: 10),
-                //       hintText: 'What do you wanna to cook today',
-                //       floatingLabelStyle: const TextStyle(
-                //         color: ColorConst.original,
-                //         fontSize: 20,
-                //       ),
-                //       focusColor: ColorConst.original,
-                //       focusedBorder: OutlineInputBorder(
-                //         borderSide: const BorderSide(
-                //           color: ColorConst.original,
-                //           width: 2,
-                //         ),
-                //         borderRadius: BorderRadius.circular(30),
-                //       ),
-                //       border: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(30),
-                //       ),
-                //     ),
-                //   ),
-                //   suggestionsCallback: (pattern) {
-                //     return controller.getSugestions(pattern);
-                //   },
-                //   itemBuilder: (context, String itemData) {
-                //     return ListTile(
-                //       title: (itemData.isEmpty)
-                //           ? const CustomText(
-                //               text: 'Loading',
-                //               fontSize: 15,
-                //             )
-                //           : CustomText(
-                //               text: itemData,
-                //               fontSize: 18,
-                //             ),
-                //     );
-                //   },
-                //   onSuggestionSelected: (suggestion) =>
-                //       controller.onSugestion(suggestion),
-                // ),
+                child: TypeAheadField<GetRecipe>(
+                  hideOnLoading: true,
+                  textFieldConfiguration: TextFieldConfiguration(
+                    style: const TextStyle(
+                      height: 1.6,
+                    ),
+                    cursorColor: ColorConst.original,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 10),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorConst.light, width: 3),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorConst.light, width: 3),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorConst.light, width: 3),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  hideSuggestionsOnKeyboardHide: false,
+                  suggestionsCallback: (pattern) =>
+                      homeController.getRecipeSugestions(pattern),
+                  itemBuilder: (context, itemData) {
+                    return ListTile(
+                      title: CustomText(
+                        text: itemData.title,
+                        fontSize: 18,
+                      ),
+                    );
+                  },
+                  onSuggestionSelected: (suggestion) {
+                    Get.toNamed(Routes.details, arguments: suggestion);
+                  },
+                  noItemsFoundBuilder: (context) => const SizedBox(
+                    height: 50,
+                    child: Center(
+                      child: CustomText(
+                        text: "There's no Recipe Found",
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
               ),
               InkWell(
                 onTap: () {},
@@ -145,8 +150,11 @@ class HomeView extends StatelessWidget {
                     width: 100.0,
                     child: InkWell(
                       onTap: () {
-                        // Get.toNamed(Routes.decont,
-                        //     arguments: [controller.newCateg[current], current]);
+                        Get.toNamed(Routes.decont, arguments: [
+                          homeController.newcateg[
+                              homeController.exist.keys.elementAt(index)],
+                          homeController.exist.keys.elementAt(index)
+                        ]);
                       },
                       child: Card(
                         child: Center(
@@ -181,12 +189,12 @@ class HomeView extends StatelessWidget {
                 itemCount: homeController
                     .recipeList.length, //controller.listRecipe.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
+                  return InkWell(
                     onTap: () {
-                      // Get.toNamed(
-                      //   Routes.details,
-                      //   arguments: controller.listRecipe[index],
-                      // );
+                      Get.toNamed(
+                        Routes.details,
+                        arguments: homeController.recipeList[index],
+                      );
                     },
                     child: Container(
                       width: 150,
@@ -261,7 +269,13 @@ class HomeView extends StatelessWidget {
                   return SizedBox(
                     width: 100.0,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(Routes.decont, arguments: [
+                          homeController.newcateg[
+                              homeController.exist.keys.elementAt(index)],
+                          homeController.exist.keys.elementAt(index)
+                        ]);
+                      },
                       child: Card(
                         child: Center(
                           child:
@@ -293,10 +307,11 @@ class HomeView extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: homeController.recipeList.length,
                 itemBuilder: (context, index) {
-                  return GestureDetector(
+                  return InkWell(
                     onTap: () {
                       // Get.toNamed(AppRoutes.details);
-                      // Get.toNamed(Routes.details, arguments: resep[index]);
+                      Get.toNamed(Routes.details,
+                          arguments: homeController.recipeList[index]);
                     },
                     child: Container(
                       margin: const EdgeInsets.all(10),
