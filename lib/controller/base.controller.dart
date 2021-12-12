@@ -1,5 +1,4 @@
 import 'package:foodu/class/recipe.dart';
-import 'package:foodu/service/config.dart';
 import 'package:get/get.dart';
 
 class BaseController extends GetxController {

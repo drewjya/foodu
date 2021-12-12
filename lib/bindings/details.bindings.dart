@@ -4,6 +4,6 @@ import 'package:get/instance_manager.dart';
 class DetailsBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => DetailsController());
+    Get.put(DetailsController());
   }
 }

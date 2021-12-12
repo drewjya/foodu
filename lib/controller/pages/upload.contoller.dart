@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:foodu/class/recipe.dart';
 import 'package:foodu/constants/color.dart';
+import 'package:foodu/service/backend.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,15 +30,18 @@ class UploadController extends GetxController {
   bool confirmIngredient = false;
   List<String> listunit = [];
   List<Data> selectedIngredients = [];
-  List<IngredientsList> ingredientList = [
-    IngredientsList(id: 1, name: 'es th', imglink: '', units: ['kg', 'g']),
-    IngredientsList(id: 2, name: 'gula', imglink: '', units: ['can', 'scoop']),
-    IngredientsList(
-        id: 3, name: 'kemenyan teh', imglink: '', units: ['kg', 'g']),
-    IngredientsList(id: 4, name: 'garam th', imglink: '', units: ['kg', 'g']),
-  ];
+  List<IngredientsList> ingredientList = [];
   String unit = '';
   IngredientsList? data;
+  void fetchIngredients() async {
+    var ingredients = await ApiHelper.fetchIngredients();
+    if (ingredients != null) {
+      ingredientList = ingredients;
+      ingredientList
+          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    }
+  }
+
   updateIngredient() {
     confirmIngredient = !confirmIngredient;
     for (var item in ingredientList) {
@@ -78,8 +82,8 @@ class UploadController extends GetxController {
     List<String> matches = <String>[];
     matches.addAll(ingredientList.map((e) => e.name).toList());
     matches.retainWhere(
-        (element) => element.toLowerCase().contains(query.toLowerCase()));
-    return matches;
+        (element) => element.toLowerCase().startsWith(query.toLowerCase()));
+    return matches.take(5).toList();
   }
 
   getunit(value) {
@@ -168,5 +172,11 @@ class UploadController extends GetxController {
       confirmTextColor: ColorConst.white,
       cancelTextColor: ColorConst.original,
     );
+  }
+
+  @override
+  void onInit() {
+    fetchIngredients();
+    super.onInit();
   }
 }

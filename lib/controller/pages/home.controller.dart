@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:foodu/class/recipe.dart';
 import 'package:foodu/constants/data.dart';
 import 'package:foodu/service/backend.dart';
@@ -6,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:collection/collection.dart';
 
 class HomeController extends GetxController {
-  late TextEditingController searchRecipe;
+  
   RxString textfieldString = ''.obs;
   RxList<GetRecipe> recipeList = <GetRecipe>[].obs;
   RxList<String> recipeName = <String>[].obs;
@@ -43,11 +42,6 @@ class HomeController extends GetxController {
 
   @override
   onInit() {
-    searchRecipe = TextEditingController();
-    searchRecipe.addListener(() {
-      textfieldString.value = searchRecipe.text;
-      debugPrint(textfieldString.value);
-    });
     fetchRecipeAll();
 
     super.onInit();

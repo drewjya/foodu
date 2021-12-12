@@ -20,7 +20,7 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) => Recipe(
       serving: json['serving'] as String,
       created: DateTime.parse(json['created'] as String),
       ingredients: (json['ingredients'] as List<dynamic>)
-          .map((e) => Data.fromJson(json:e as Map<String, dynamic>))
+          .map((e) => Data.fromJson(json: e as Map<String, dynamic>))
           .toList(),
       categories: json['categories'] as List<dynamic>,
     );
@@ -45,6 +45,7 @@ Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
       'categories': instance.categories,
     };
 GetRecipe _$GetRecipeFromJson(Map<String, dynamic> json) => GetRecipe(
+      favorited: json['favorited'] as List<dynamic>,
       id: json['id'] as int,
       protein: json['protein'] as String,
       calories: json['calories'] as String,
@@ -58,9 +59,9 @@ GetRecipe _$GetRecipeFromJson(Map<String, dynamic> json) => GetRecipe(
       title: json['title'] as String,
       serving: json['serving'] as String,
       created: DateTime.parse(json['created'] as String),
-      ingredients: (json['ingredients']).map<Data>((e) =>
-        Data.fromJson(json:e as Map<String, dynamic>)
-      ).toList(),
+      ingredients: (json['ingredients'])
+          .map<Data>((e) => Data.fromJson(json: e as Map<String, dynamic>))
+          .toList(),
       categories: json['categories'] as List<dynamic>,
     );
 
@@ -83,6 +84,7 @@ Map<String, dynamic> _$GetRecipeToJson(GetRecipe instance) => <String, dynamic>{
           .toList(),
       'tutorial': instance.tutorial,
       'categories': instance.categories,
+      'favorited': instance.favorited,
     };
 
 InputRecipe _$InputRecipeFromJson(Map<String, dynamic> json) => InputRecipe(
@@ -98,7 +100,7 @@ InputRecipe _$InputRecipeFromJson(Map<String, dynamic> json) => InputRecipe(
           .map((e) => e as String)
           .toList(),
       ingredients: (json['ingredients'] as List<Map<String, dynamic>>)
-          .map((e) => Data.fromJson(json:e))
+          .map((e) => Data.fromJson(json: e))
           .toList(),
     );
 
@@ -120,7 +122,7 @@ Map<String, dynamic> _$InputRecipeToJson(InputRecipe instance) =>
 
 Ingreepek _$IngreepekFromJson(Map<String, dynamic> json) => Ingreepek(
       ingredients: (json['ingredients'] as List<dynamic>)
-          .map((e) => Data.fromJson(json:e as Map<String, dynamic>))
+          .map((e) => Data.fromJson(json: e as Map<String, dynamic>))
           .toList(),
     );
 

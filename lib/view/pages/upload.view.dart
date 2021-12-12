@@ -331,7 +331,7 @@ class UploadView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
-                                    width: 200,
+                                    width: 180,
                                     child: TextField(
                                       controller: controller.qtyitem,
                                       keyboardType: TextInputType.number,
@@ -359,36 +359,28 @@ class UploadView extends StatelessWidget {
                                         ),
                                       ),
                                     )),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 5),
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      color: ColorConst.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: DropdownButton<String>(
-                                      value: controller.unit,
-                                      icon: const Icon(
-                                        Icons.arrow_drop_down,
-                                        color: ColorConst.original,
-                                      ),
-                                      iconSize: 42,
-                                      underline: const SizedBox(),
-                                      items: controller.listunit
-                                          .map<DropdownMenuItem<String>>(
-                                              (String e) {
-                                        return DropdownMenuItem(
-                                          child: CustomText(
-                                            text: e,
-                                            fontSize: 18,
-                                          ),
-                                          value: e,
-                                        );
-                                      }).toList(),
-                                      onChanged: (e) {
-                                        controller.getunit(e);
-                                      }),
-                                )
+                                DropdownButton<String>(
+                                    value: controller.unit,
+                                    icon: const Icon(
+                                      Icons.arrow_drop_down,
+                                      color: ColorConst.original,
+                                    ),
+                                    iconSize: 30,
+                                    underline: const SizedBox(),
+                                    items: controller.listunit
+                                        .map<DropdownMenuItem<String>>(
+                                            (String e) {
+                                      return DropdownMenuItem(
+                                        child: CustomText(
+                                          text: e,
+                                          fontSize: 18,
+                                        ),
+                                        value: e,
+                                      );
+                                    }).toList(),
+                                    onChanged: (e) {
+                                      controller.getunit(e);
+                                    })
                               ],
                             )
                           : null,

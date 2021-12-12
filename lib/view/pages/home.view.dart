@@ -11,7 +11,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
-  final HomeController homeController = Get.put(HomeController());
+  final HomeController homeController =
+      Get.put(HomeController(), permanent: false);
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +44,17 @@ class HomeView extends StatelessWidget {
                           vertical: 0, horizontal: 10),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: ColorConst.light, width: 3),
+                            const BorderSide(color: ColorConst.light, width: 3),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: ColorConst.light, width: 3),
+                            const BorderSide(color: ColorConst.light, width: 3),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       border: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: ColorConst.light, width: 3),
+                            const BorderSide(color: ColorConst.light, width: 3),
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -112,15 +113,7 @@ class HomeView extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(right: 20),
                   child: InkWell(
-                    onTap: () {
-                      // print(controller.newCateg);
-                      // Get.toNamed(Routes.seeall, arguments: [
-                      //   controller.exist.keys.toList(),
-                      //   "what's hot",
-                      //   controller.newCateg,
-                      //   controller.allRecipe,
-                      // ]);
-                    },
+                    onTap: () {},
                     child: Text(
                       "see all",
                       style: GoogleFonts.lato(

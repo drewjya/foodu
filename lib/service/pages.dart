@@ -33,12 +33,12 @@ List<GetPage> pages = [
     name: Routes.base,
     page: () => const BaseView(),
     binding: BaseBinding(),
-    // binding: SignupBinding(),
   ),
   GetPage(
-      name: Routes.details,
-      page: () => const DetailsContent(),
-      binding: DetailsBinding()),
+    name: Routes.details,
+    page: () => const DetailsContent(),
+    binding: DetailsBinding(),
+  ),
   GetPage(
     name: Routes.decont,
     page: () => const DetailsCategories(),

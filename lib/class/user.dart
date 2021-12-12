@@ -1,39 +1,37 @@
-class User {
+class UserData {
   final String username;
   final String email;
-  String imglink;
+  final String id;
+  String? imglink;
   String bio;
-  List<int> favorited;
   int followers;
   int following;
-  List<int> recipe;
-  User(
+  UserData(
       {required this.username,
+      required this.id,
       required this.email,
       required this.bio,
-      required this.favorited,
       required this.followers,
       required this.following,
-      required this.imglink,
-      required this.recipe});
-  factory User.fromJson({required Map<String, dynamic> json}) => User(
+      required this.imglink,});
+  factory UserData.fromJson({required Map<String, dynamic> json}) => UserData(
         username: json['username'] as String,
+        id: json['id'] as String,
         email: json['email'] as String,
         bio: json['bio'] as String,
-        favorited: json['favorited'] as List<int>,
         followers: json['followers'] as int,
         following: json['following'] as int,
-        recipe: json['recipe'] as List<int>,
-        imglink: json['imglink'] as String,
+        imglink: json['imglink'],
       );
   Map<String, dynamic> toJson() => <String, dynamic>{
         'username': username,
         'email': email,
         'bio': bio,
-        'favorited': favorited,
+        
         'followers': followers,
         'following': following,
-        'recipe': recipe,
+        
         'imglink': imglink,
+        'id': id,
       };
 }

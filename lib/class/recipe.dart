@@ -41,7 +41,7 @@ class GetRecipe {
   final String info;
   final String imglink;
   final String serving;
-  final List<dynamic> tutorial, categories;
+  final List<dynamic> tutorial, categories, favorited;
   final String calories;
   final String fat;
   final DateTime created;
@@ -49,6 +49,7 @@ class GetRecipe {
   final String protein;
   final List<Data> ingredients;
   GetRecipe({
+    required this.favorited,
     required this.id,
     required this.title,
     required this.info,

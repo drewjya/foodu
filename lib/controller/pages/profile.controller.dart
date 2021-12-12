@@ -1,39 +1,41 @@
 import 'package:foodu/class/recipe.dart';
 import 'package:foodu/class/user.dart';
+import 'package:foodu/service/backend.dart';
 import 'package:get/get.dart';
-import 'package:foodu/view/pages/resep.dart';
 
 class ProfileController extends GetxController {
-  User mockuser = User(
-      username: 'Bambi',
-      email: 'email',
-      bio: 'haha',
-      favorited: [10, 14, 11],
-      followers: 0,
-      following: 0,
-      imglink: '',
-      recipe: [10, 12, 13]);
-  List<GetRecipe> favorited = [];
-  List<GetRecipe> created = [];
-  List<GetRecipe> resep = [];
+  UserData? mockuser;
+  RxList<GetRecipe> favorited = <GetRecipe>[].obs;
+  RxList<GetRecipe> created = <GetRecipe>[].obs;
+  RxList<GetRecipe> resep = <GetRecipe>[].obs;
+  void fetchData() async {
+    var recipes = await ApiHelper.fetchRecipe();
+    var user = await ApiHelper.fetchUser(
+        userid: 'd8c976b7-82d6-4ef3-bd8b-28789075684c');
+    if (recipes != null) {
+      resep.addAll(recipes);
+      if (user != null) {
+        mockuser = user;
+      }
+
+      for (var item in resep) {
+        if (item.creator == mockuser!.id) {
+          created.add(item);
+        }
+        for (var element in item.favorited) {
+          if (element == mockuser!.id) {
+            favorited.add(item);
+          }
+        }
+        favorited.sort(
+            (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+      }
+    }
+  }
 
   @override
   onInit() {
-    for (var element in data) {
-      resep.add(GetRecipe.fromJson(json: element));
-    }
-    for (var item in resep) {
-      for (var element in mockuser.favorited) {
-        if (element.isEqual(item.id)) {
-          favorited.add(item);
-        }
-      }
-      for (var element in mockuser.recipe) {
-        if (element.isEqual(item.id)) {
-          created.add(item);
-        }
-      }
-    }
+    fetchData();
     super.onInit();
   }
 }
