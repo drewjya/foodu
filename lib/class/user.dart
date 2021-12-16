@@ -1,19 +1,20 @@
 class UserData {
-  final String username;
-  final String email;
-  final String id;
+  String username;
+  String email;
+  String id;
   String? imglink;
   String bio;
   int followers;
   int following;
-  UserData(
-      {required this.username,
-      required this.id,
-      required this.email,
-      required this.bio,
-      required this.followers,
-      required this.following,
-      required this.imglink,});
+  UserData({
+    required this.username,
+    required this.id,
+    required this.email,
+    required this.bio,
+    required this.followers,
+    required this.following,
+    required this.imglink,
+  });
   factory UserData.fromJson({required Map<String, dynamic> json}) => UserData(
         username: json['username'] as String,
         id: json['id'] as String,
@@ -27,10 +28,8 @@ class UserData {
         'username': username,
         'email': email,
         'bio': bio,
-        
         'followers': followers,
         'following': following,
-        
         'imglink': imglink,
         'id': id,
       };
