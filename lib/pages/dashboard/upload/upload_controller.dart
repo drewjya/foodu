@@ -210,7 +210,8 @@ class UploadController extends GetxController {
       UserData user = await _service.getCurrentUser();
       final response = await nutritionGet.postApi(selectedIngredients);
       CaloriesSource caloriesSource = CaloriesSource.fromJson(json: response);
-      final imgupload = await _recipeService.uploadImageRecipe(filename,picture);
+      final imgupload =
+          await _recipeService.uploadImageRecipe(filename, picture);
       Recipe resep = Recipe(
           title: title.text,
           info: descriptions.text,
@@ -246,14 +247,21 @@ class UploadController extends GetxController {
       update();
       Get.snackbar('Congrats', '${title.text} is uploaded',
           backgroundColor: Colors.greenAccent);
+      notUploading = true;
+      // _service.update();
+      // Get.reload<Service>(force: true);
+      update();
     }
   }
 
+  bool notUploading = true;
   onSubmit() {
     Get.defaultDialog(
       title: 'Confirm',
       middleText: 'Are you finished',
       onConfirm: () async {
+        notUploading = false;
+        update();
         Get.back();
         await uploadData();
       },

@@ -9,7 +9,7 @@ import 'package:collection/collection.dart';
 class Service extends GetxController {
   final RecipeService _recipeService = RecipeService();
   final UserServices _userServices = UserServices();
-  final searchController = TextEditingController();
+  late TextEditingController searchController;
   List<GetRecipe> resepAll = [];
   late List<GetRecipe> favorite;
   late List<GetRecipe> create;
@@ -122,6 +122,7 @@ class Service extends GetxController {
 
   @override
   void onInit() async {
+    searchController = TextEditingController();
     resepAll = await getAllRecipe();
     update();
     user = await getCurrentUser();
@@ -139,7 +140,7 @@ class Service extends GetxController {
 
   @override
   void onClose() {
-    searchController.dispose();
+    // searchController.clear();
     super.onClose();
   }
 }
