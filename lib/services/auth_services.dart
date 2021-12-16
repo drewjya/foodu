@@ -34,6 +34,7 @@ class AuthService {
       SecureStorages.write(response.data!);
       return true;
     }
+    Get.snackbar('Error', response.error!.message);
     return false;
   }
 

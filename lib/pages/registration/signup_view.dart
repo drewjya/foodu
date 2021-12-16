@@ -177,10 +177,14 @@ class SignupView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Checkbox(value: false, onChanged: (value) {}),
-                            const NewText(
-                              'I’ve read and accept the terms and conditions',
-                              fontSize: 12,
-                              color: NewColor.original,
+                            Wrap(
+                              children: const [
+                                NewText(
+                                  'I’ve read and accept the terms and conditions',
+                                  fontSize: 12,
+                                  color: NewColor.original,
+                                ),
+                              ],
                             ),
                           ],
                         ),
