@@ -10,11 +10,13 @@ class WrapperView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<WrapperController>(builder: (controller) {
-      return const NewScaffold(
+      return NewScaffold(
         backgroundColor: NewColor.original,
         body: Center(
-          child: CircularProgressIndicator(
-            color: Colors.white,
+          child: Image.asset(
+            'assets/foodu.png',
+            width: Get.width / 2,
+            fit: BoxFit.fitWidth,
           ),
         ),
       );

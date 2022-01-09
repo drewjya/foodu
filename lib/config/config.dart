@@ -2,9 +2,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 const myAuthRedirectUri = 'io.supabase.foodu://login-callback';
-const supabaseUrl = 'https://ujbewodylgfdzyjzaorv.supabase.co';
-const supabaseAnnonKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODY5OTg3NywiZXhwIjoxOTU0Mjc1ODc3fQ.wTYJgiyOpRCs6OqsGWutmLA7kKtkRVD6FWydp6kOlks';
+const supabaseUrl = 'https://vzdglcklsqnsutfywqsx.supabase.co';
+const supabaseAnon =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTA4MzQyMCwiZXhwIjoxOTU2NjU5NDIwfQ.61dta2YqUDYIS6rG50AnNdB10Vg-TlpW2xN85izSndw';
 
 // user flutter_secure_storage to persist user session
 class SecureStorages {

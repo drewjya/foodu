@@ -233,9 +233,10 @@ class UploadController extends GetxController {
       imageExist = false;
       cookingTime.clear();
       choosenCategories.clear();
-      categories.forEach((element) {
+
+      for (var element in categories) {
         element['choosen'] = false;
-      });
+      }
       update();
       selectedIngredients.clear();
       servings.clear();

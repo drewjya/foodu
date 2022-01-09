@@ -19,7 +19,7 @@ class UserData {
         username: json['username'] as String,
         id: json['id'] as String,
         email: json['email'] as String,
-        bio: json['bio'] as String,
+        bio: (json['bio'] == null) ? '' : json['bio'] as String,
         followers: json['followers'] as int,
         following: json['following'] as int,
         imglink: json['imglink'],

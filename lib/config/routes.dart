@@ -7,4 +7,5 @@ class Routes {
   static const content = '/content';
   static const categories = '/categories';
   static const logout = '/logout';
+  static const seeall = '/seeall';
 }

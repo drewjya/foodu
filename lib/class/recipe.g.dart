@@ -53,7 +53,7 @@ GetRecipe _$GetRecipeFromJson(Map<String, dynamic> json) => GetRecipe(
       creator: json['creator'] as String,
       cookingtime: json['cookingtime'] as String,
       info: json['info'] as String,
-      fat: json['fat'] as String,
+      fat: json['total_fat'] as String,
       imglink: json['imglink'] as String,
       tutorial: json['tutorial'] as List<dynamic>,
       title: json['title'] as String,

@@ -1,6 +1,7 @@
 import 'package:foodu/config/routes.dart';
 import 'package:foodu/pages/details/content/content_controller.dart';
 import 'package:foodu/pages/details/content/content_view.dart';
+import 'package:foodu/pages/details/content/see_all.dart';
 import 'package:foodu/pages/details/details_categories.dart';
 import 'package:foodu/pages/dashboard/dashboard_controller.dart';
 import 'package:foodu/pages/dashboard/dashboard_view.dart';
@@ -46,6 +47,10 @@ List<GetPage> pages = [
   GetPage(
     name: Routes.categories,
     page: () => const DetailsCategories(),
+  ),
+  GetPage(
+    name: Routes.seeall,
+    page: () => const SeeAll(),
   ),
   GetPage(
     name: Routes.logout,

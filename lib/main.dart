@@ -7,7 +7,7 @@ import 'config/routes.dart';
 import 'package:supabase/supabase.dart';
 
 void main() {
-  Get.put<SupabaseClient>(SupabaseClient(supabaseUrl, supabaseAnnonKey));
+  Get.put<SupabaseClient>(SupabaseClient(supabaseUrl, supabaseAnon));
   runApp(const Root());
 }
 

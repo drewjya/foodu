@@ -143,7 +143,12 @@ class ProfileView extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(right: 25),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(Routes.seeall, arguments: [
+                          "Showcases",
+                          controller.create,
+                        ]);
+                      },
                       child: const NewText(
                         "see all",
                         fontSize: 14,
@@ -217,7 +222,10 @@ class ProfileView extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(right: 25),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(Routes.seeall,
+                            arguments: ["Cookbook", controller.favorite]);
+                      },
                       child: const NewText(
                         "see all",
                         fontSize: 14,

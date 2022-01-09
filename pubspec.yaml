@@ -27,6 +27,7 @@ dependencies:
   flutter_typeahead: ^3.2.4
   file_picker: ^4.2.7
   flutter_secure_storage: ^5.0.2
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:

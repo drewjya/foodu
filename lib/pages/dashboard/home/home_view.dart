@@ -120,7 +120,10 @@ class HomeView extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(right: 20),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.seeall,
+                              arguments: ["What's hot", controller.resepAll]);
+                        },
                         child: const NewText(
                           "see all",
                           color: NewColor.original,
@@ -223,7 +226,12 @@ class HomeView extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(right: 20),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.seeall, arguments: [
+                            "fresh from the oven",
+                            controller.resepAll
+                          ]);
+                        },
                         child: const NewText(
                           "see all",
                           color: NewColor.original,

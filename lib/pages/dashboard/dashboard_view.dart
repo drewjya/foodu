@@ -44,7 +44,7 @@ class DashboardView extends StatelessWidget {
               icon: Icon(Icons.add_box),
               label: '',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: '',),
           ],
           currentIndex: dashboard.selected.value,
         ),
