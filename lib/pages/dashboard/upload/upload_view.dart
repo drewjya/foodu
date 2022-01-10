@@ -611,7 +611,7 @@ class UploadView extends StatelessWidget {
                                 child: Center(
                                   child: NewText(
                                     current,
-                                    fontSize: 16,
+                                    fontSize: 13,
                                     color:
                                         condition ? Colors.white : Colors.black,
                                   ),

@@ -56,10 +56,13 @@ class SeeAll extends StatelessWidget {
                                 )),
                             height: 34,
                             child: Center(
-                              child: NewText(
-                                current[index].title,
-                                textAlign: TextAlign.center,
-                                fontWeight: FontWeight.values[4],
+                              child: FittedBox(
+                                child: NewText(
+                                  current[index].title,
+                                  
+                                  textAlign: TextAlign.center,
+                                  fontWeight: FontWeight.values[4],
+                                ),
                               ),
                             ),
                           ),
