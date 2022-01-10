@@ -603,17 +603,20 @@ class UploadView extends StatelessWidget {
                             return InkWell(
                               onTap: () => controller.chooseCategories(index),
                               child: Container(
+                                padding: const EdgeInsets.all(4),
                                 decoration: BoxDecoration(
                                     color: condition
                                         ? NewColor.original
                                         : NewColor.light,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Center(
-                                  child: NewText(
-                                    current,
-                                    fontSize: 13,
-                                    color:
-                                        condition ? Colors.white : Colors.black,
+                                  child: FittedBox(
+                                    child: NewText(
+                                      current,
+                                      color: condition
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
                                   ),
                                 ),
                               ),

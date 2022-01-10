@@ -62,6 +62,7 @@ class DetailsCategories extends StatelessWidget {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
+                                padding: const EdgeInsets.all(5),
                                 decoration: const BoxDecoration(
                                     color: NewColor.cream,
                                     borderRadius: BorderRadius.only(
@@ -70,10 +71,12 @@ class DetailsCategories extends StatelessWidget {
                                     )),
                                 height: 34,
                                 child: Center(
-                                  child: NewText(
-                                    current[index].title,
-                                    textAlign: TextAlign.center,
-                                    fontWeight: FontWeight.values[4],
+                                  child: FittedBox(
+                                    child: NewText(
+                                      current[index].title,
+                                      textAlign: TextAlign.center,
+                                      fontWeight: FontWeight.values[4],
+                                    ),
                                   ),
                                 ),
                               ),

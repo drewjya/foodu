@@ -48,6 +48,7 @@ class SeeAll extends StatelessWidget {
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
+                            padding: const EdgeInsets.all(5),
                             decoration: const BoxDecoration(
                                 color: NewColor.cream,
                                 borderRadius: BorderRadius.only(
